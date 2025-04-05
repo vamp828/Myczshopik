@@ -3,65 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Cool Website</title>
+    <title>MyCzshop</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=EUR"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: white;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #00bfff, #00ffff);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            overflow: hidden;
+            color: white;
+            animation: backgroundAnimation 10s ease-in-out infinite;
         }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #00bfff, #00ffff); }
+            50% { background: linear-gradient(135deg, #ff00ff, #ff6600); }
+            100% { background: linear-gradient(135deg, #00bfff, #00ffff); }
+        }
+
         .container {
             text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
         }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #00bfff;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
         .neon-btn {
             background-color: #00bfff;
             border: none;
             color: white;
             padding: 15px 30px;
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: bold;
             cursor: pointer;
-            border-radius: 30px;
+            border-radius: 50px;
             text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 0 0 30px rgba(0, 191, 255, 0.6);
-            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.8), 0 0 25px rgba(0, 191, 255, 0.6);
+            transition: all 0.3s ease-in-out;
+            letter-spacing: 1px;
         }
+
         .neon-btn:hover {
             background-color: #00ffff;
-            box-shadow: 0 0 20px rgba(0, 191, 255, 1), 0 0 40px rgba(0, 191, 255, 0.8);
+            box-shadow: 0 0 35px rgba(0, 191, 255, 1), 0 0 50px rgba(0, 191, 255, 0.8);
+            transform: scale(1.1);
         }
+
         .inner-btns {
             display: none;
-            margin-top: 20px;
+            margin-top: 30px;
         }
+
         .inner-btns button {
             background-color: #222;
             border: none;
             color: white;
-            padding: 10px 25px;
-            font-size: 18px;
+            padding: 12px 35px;
+            font-size: 20px;
             cursor: pointer;
-            margin: 10px;
-            border-radius: 20px;
-            transition: all 0.2s;
+            margin: 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
+
         .inner-btns button:hover {
             background-color: #444;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
         }
+
         .whatsapp-btn {
             background-color: #25d366;
         }
+
         .whatsapp-btn:hover {
             background-color: #128c7e;
+        }
+
+        .paypal-btn-container {
+            display: none;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Avatar -->
+        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="avatar">
+        <h1>MyCzshop</h1>
         <button class="neon-btn" onclick="showPaymentOptions()">Want to Buy?</button>
 
         <div class="inner-btns" id="paymentOptions">
@@ -71,7 +126,7 @@
             <button class="whatsapp-btn" onclick="openWhatsApp()">Contact me on WhatsApp</button>
         </div>
 
-        <div id="paypal-button-container" style="display:none;"></div>
+        <div class="paypal-btn-container" id="paypal-button-container"></div>
     </div>
 
     <script>
@@ -91,14 +146,12 @@
                 selectedPrice = 5.30;
             }
 
-            // Zobrazit tlačítko PayPal pro danou cenu
             showPayPalButton(selectedPrice, paypalEmail);
         }
 
         function showPayPalButton(price, email) {
             document.getElementById("paypal-button-container").style.display = "block";
 
-            // Tlačítko pro platbu na PayPal pomocí e-mailu
             const buttonHTML = `
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_xclick">
