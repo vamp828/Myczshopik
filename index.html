@@ -129,7 +129,7 @@
             <div style="margin-top: 20px;">
                 <input type="number" id="customAmount" placeholder="Tip €" min="0.50" step="0.10"
                     style="padding: 10px 15px; font-size: 18px; border-radius: 15px; border: none; outline: none; width: 220px;">
-                <button class="neon-btn" onclick="sendCustomAmount()">Send Tip</button>
+                <button class="neon-btn" id="sendTipBtn" onclick="sendCustomAmount()">Send Tip</button>
             </div>
 
             <button class="whatsapp-btn" onclick="openWhatsApp()">Contact me on WhatsApp</button>
@@ -175,7 +175,7 @@
         }
 
         function selectScript(scriptType) {
-            // Zrušení aktivní třídy na všech tlačítkách
+            // Reset aktivních tlačítek
             document.getElementById('light').classList.remove('active');
             document.getElementById('medium').classList.remove('active');
             document.getElementById('high').classList.remove('active');
@@ -191,6 +191,9 @@
                 document.getElementById('high').classList.add('active');
             }
 
+            // Deaktivace tlačítka "Send Tip" pokud není vybrán žádný script
+            document.getElementById('sendTipBtn').classList.remove('active');
+
             showPayPalButton(selectedPrice, paypalEmail);
         }
 
@@ -201,6 +204,8 @@
                 return;
             }
 
+            // Aktivace tlačítka "Send Tip" po kliknutí na něj
+            document.getElementById('sendTipBtn').classList.add('active');
             showPayPalButton(custom.toFixed(2), paypalEmail);
         }
 
