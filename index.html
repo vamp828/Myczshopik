@@ -44,9 +44,22 @@
 
         h1 {
             font-size: 36px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             font-weight: 700;
+        }
+
+        .subtext {
+            font-size: 20px;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: #aadfff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .neon-btn {
@@ -118,6 +131,7 @@
         <!-- Avatar -->
         <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="avatar">
         <h1>MyCzshop</h1>
+        <p class="subtext">🚀 Launch your dream online — grab a website made just for YOU!</p>
         <button class="neon-btn" onclick="showPaymentOptions()">Want to Buy?</button>
 
         <div class="inner-btns" id="paymentOptions">
@@ -125,7 +139,6 @@
             <button id="medium" onclick="selectScript('medium')">Medium Script - 500 EUR</button>
             <button id="high" onclick="selectScript('high')">High Script - 1000 EUR</button>
 
-            <!-- Upravený blok pro tip -->
             <div style="margin-top: 20px;">
                 <input type="number" id="customAmount" placeholder="Tip €" min="0.50" step="0.10"
                     style="padding: 10px 15px; font-size: 18px; border-radius: 15px; border: none; outline: none; width: 220px;">
@@ -140,9 +153,8 @@
 
     <script>
         let selectedPrice = 0;
-        let paypalEmail = "manukyanalen89@gmail.com"; // Tvůj PayPal
+        let paypalEmail = "manukyanalen89@gmail.com";
 
-        // Pozadí reagující na pohyb myši
         document.body.addEventListener('mousemove', function(event) {
             let x = event.clientX / window.innerWidth * 100;
             let y = event.clientY / window.innerHeight * 100;
@@ -171,11 +183,10 @@
                 </form>
             `;
             document.getElementById("paypal-button-container").innerHTML = buttonHTML;
-            document.getElementById("paypal-button-container").style.display = "block"; // Tlačítko se zobrazí hned
+            document.getElementById("paypal-button-container").style.display = "block";
         }
 
         function selectScript(scriptType) {
-            // Reset aktivních tlačítek
             document.getElementById('light').classList.remove('active');
             document.getElementById('medium').classList.remove('active');
             document.getElementById('high').classList.remove('active');
@@ -191,9 +202,7 @@
                 document.getElementById('high').classList.add('active');
             }
 
-            // Deaktivace tlačítka "Send Tip" pokud není vybrán žádný script
             document.getElementById('sendTipBtn').classList.remove('active');
-
             showPayPalButton(selectedPrice, paypalEmail);
         }
 
@@ -204,7 +213,6 @@
                 return;
             }
 
-            // Aktivace tlačítka "Send Tip" po kliknutí na něj
             document.getElementById('sendTipBtn').classList.add('active');
             showPayPalButton(custom.toFixed(2), paypalEmail);
         }
