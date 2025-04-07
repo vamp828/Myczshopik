@@ -121,9 +121,9 @@
         <button class="neon-btn" onclick="showPaymentOptions()">Want to Buy?</button>
 
         <div class="inner-btns" id="paymentOptions">
-            <button id="light" onclick="selectScript('light')">Light Script - 1.30 EUR</button>
-            <button id="medium" onclick="selectScript('medium')">Medium Script - 3.30 EUR</button>
-            <button id="high" onclick="selectScript('high')">High Script - 5.30 EUR</button>
+            <button id="light" onclick="selectScript('light')">Light Script - 150 EUR</button>
+            <button id="medium" onclick="selectScript('medium')">Medium Script - 500 EUR</button>
+            <button id="high" onclick="selectScript('high')">High Script - 1000 EUR</button>
 
             <!-- Upravený blok pro tip -->
             <div style="margin-top: 20px;">
@@ -181,13 +181,13 @@
             document.getElementById('high').classList.remove('active');
 
             if (scriptType === 'light') {
-                selectedPrice = 1.30;
+                selectedPrice = 150;
                 document.getElementById('light').classList.add('active');
             } else if (scriptType === 'medium') {
-                selectedPrice = 3.30;
+                selectedPrice = 500;
                 document.getElementById('medium').classList.add('active');
             } else if (scriptType === 'high') {
-                selectedPrice = 5.30;
+                selectedPrice = 1000;
                 document.getElementById('high').classList.add('active');
             }
 
