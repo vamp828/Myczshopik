@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyCzshop</title>
-    <!-- Favicon -->
     <link rel="icon" href="https://img.icons8.com/?size=100&id=2TlXnKX7oZXI&format=png&color=000000" type="image/png">
     <style>
         * {
@@ -21,94 +20,101 @@
             align-items: center;
             overflow: hidden;
             color: white;
-            background: #00bfff;
+            background: rgb(0, 191, 255);
+            background: linear-gradient(45deg, rgb(0, 191, 255), rgb(255, 0, 204), rgb(0, 255, 204), rgb(255, 102, 255));
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
             transition: background 0.3s ease;
+            flex-direction: row;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
             text-align: center;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
+            width: 90%;
+            max-width: 700px;
+            transition: transform 0.1s ease-out;
         }
 
         .avatar {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 4px solid #00bfff;
         }
 
         h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             font-weight: 700;
         }
 
         .subtext {
-            font-size: 20px;
-            margin-bottom: 25px;
+            font-size: 18px;
+            margin-bottom: 20px;
             font-style: italic;
             color: #aadfff;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .neon-btn {
             background-color: #00bfff;
             border: none;
             color: white;
-            padding: 15px 30px;
-            font-size: 22px;
+            padding: 12px 24px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
             border-radius: 50px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 191, 255, 0.8), 0 0 25px rgba(0, 191, 255, 0.6);
+            box-shadow: 0 0 12px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.6);
             transition: all 0.3s ease-in-out;
             letter-spacing: 1px;
         }
 
         .neon-btn:hover {
             background-color: #00ffff;
-            box-shadow: 0 0 35px rgba(0, 191, 255, 1), 0 0 50px rgba(0, 191, 255, 0.8);
-            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 1), 0 0 45px rgba(0, 191, 255, 0.8);
+            transform: scale(1.05);
         }
 
         .inner-btns {
-            display: none;
-            margin-top: 30px;
+            display: block;
+            margin-top: 20px;
         }
 
         .inner-btns button {
             background-color: #222;
             border: none;
             color: white;
-            padding: 12px 35px;
-            font-size: 20px;
+            padding: 10px 30px;
+            font-size: 16px;
             cursor: pointer;
-            margin: 15px;
+            margin: 12px;
             border-radius: 25px;
             transition: all 0.3s ease;
             font-weight: 500;
-            letter-spacing: 0.5px;
         }
 
         .inner-btns button:hover {
             background-color: #444;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
         }
 
         .whatsapp-btn {
             background-color: #25d366;
+            font-size: 16px;
         }
 
         .whatsapp-btn:hover {
@@ -117,12 +123,37 @@
 
         .paypal-btn-container {
             display: none;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
-        .active {
-            background-color: #00ffff;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+        .info-section {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .info-section h2 {
+            font-size: 22px;
+            color: #00bfff;
+            font-weight: 700;
+        }
+
+        .info-section p {
+            font-size: 14px;
+            color: #aadfff;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .subtext, .neon-btn {
+            animation: fadeIn 1s ease-in-out;
         }
     </style>
 </head>
@@ -132,16 +163,23 @@
         <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="avatar">
         <h1>MyCzshop</h1>
         <p class="subtext">🚀 Launch your dream online — grab a website made just for YOU!</p>
-        <button class="neon-btn" onclick="showPaymentOptions()">Want to Buy?</button>
+        <!-- Modified "Want to Buy?" Button -->
+        <button class="neon-btn" id="wantToBuyBtn">Want to Buy?</button>
+
+        <!-- New Information Section -->
+        <div class="info-section">
+            <h2>📩 Contact Before You Buy!</h2>
+            <p>If you're interested in purchasing, feel free to reach out to me on WhatsApp for more details or any questions!</p>
+        </div>
 
         <div class="inner-btns" id="paymentOptions">
             <button id="light" onclick="selectScript('light')">Light Script - 150 EUR</button>
             <button id="medium" onclick="selectScript('medium')">Medium Script - 500 EUR</button>
             <button id="high" onclick="selectScript('high')">High Script - 1000 EUR</button>
 
-            <div style="margin-top: 20px;">
+            <div style="margin-top: 15px;">
                 <input type="number" id="customAmount" placeholder="Tip €" min="0.50" step="0.10"
-                    style="padding: 10px 15px; font-size: 18px; border-radius: 15px; border: none; outline: none; width: 220px;">
+                    style="padding: 8px 12px; font-size: 14px; border-radius: 12px; border: none; outline: none; width: 180px;">
                 <button class="neon-btn" id="sendTipBtn" onclick="sendCustomAmount()">Send Tip</button>
             </div>
 
@@ -155,14 +193,28 @@
         let selectedPrice = 0;
         let paypalEmail = "manukyanalen89@gmail.com";
 
-        document.body.addEventListener('mousemove', function(event) {
-            let x = event.clientX / window.innerWidth * 100;
-            let y = event.clientY / window.innerHeight * 100;
-            let rotateX = (y - 50) * 0.1;
-            let rotateY = (x - 50) * 0.1;
+        // Track mouse movement
+        document.addEventListener('mousemove', function (e) {
+            const container = document.querySelector('.container');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
 
-            document.body.style.background = `linear-gradient(${rotateX}deg, #ff00ff, #00bfff)`;
-            document.body.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            // Calculate the direction towards the mouse
+            const rect = container.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Calculate the tilt for both axes
+            const tiltX = (centerY - mouseY) / 20;  // Tilt along Y-axis
+            const tiltY = (mouseX - centerX) / 20;  // Tilt along X-axis
+
+            // Apply the tilt to the container
+            container.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        });
+
+        // Do nothing when the "Want to Buy?" button is clicked initially
+        document.getElementById("wantToBuyBtn").addEventListener("click", function() {
+            // No action is taken initially
         });
 
         function showPaymentOptions() {
@@ -187,38 +239,49 @@
         }
 
         function selectScript(scriptType) {
-            document.getElementById('light').classList.remove('active');
-            document.getElementById('medium').classList.remove('active');
-            document.getElementById('high').classList.remove('active');
+            // Hide the options and input once a selection is made
+            document.getElementById('paymentOptions').style.display = "none";
+            document.getElementById("sendTipBtn").style.display = "none";  // Hiding the "Send Tip" button
+            document.getElementById("customAmount").style.display = "none"; // Hiding the tip input
 
+            // Hide the "Want to Buy?" button
+            document.getElementById("wantToBuyBtn").style.display = "none";
+
+            // Set the price based on selected script
             if (scriptType === 'light') {
                 selectedPrice = 150;
-                document.getElementById('light').classList.add('active');
             } else if (scriptType === 'medium') {
                 selectedPrice = 500;
-                document.getElementById('medium').classList.add('active');
             } else if (scriptType === 'high') {
                 selectedPrice = 1000;
-                document.getElementById('high').classList.add('active');
             }
 
-            document.getElementById('sendTipBtn').classList.remove('active');
+            // Show PayPal button
             showPayPalButton(selectedPrice, paypalEmail);
         }
 
-        function sendCustomAmount() {
-            const custom = parseFloat(document.getElementById("customAmount").value);
-            if (!custom || custom < 0.5) {
-                alert("Please enter at least 0.50 EUR");
-                return;
-            }
-
-            document.getElementById('sendTipBtn').classList.add('active');
-            showPayPalButton(custom.toFixed(2), paypalEmail);
+        function openWhatsApp() {
+            const message = "Hello, I am interested in purchasing your script.";
+            const phoneNumber = "+420774399973"; // Replace with your number
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, "_blank");
         }
 
-        function openWhatsApp() {
-            window.open("https://wa.me/420774399973", "_blank");
+        function sendCustomAmount() {
+            const customAmount = document.getElementById("customAmount").value;
+            if (customAmount && customAmount > 0) {
+                // Hide all options and input
+                document.getElementById('paymentOptions').style.display = "none";
+                document.getElementById("sendTipBtn").style.display = "none";  // Hiding the "Send Tip" button
+                document.getElementById("customAmount").style.display = "none"; // Hiding the tip input
+
+                // Hide the "Want to Buy?" button
+                document.getElementById("wantToBuyBtn").style.display = "none";
+
+                showPayPalButton(customAmount, paypalEmail);
+            } else {
+                alert("Please enter a valid amount.");
+            }
         }
     </script>
 </body>
